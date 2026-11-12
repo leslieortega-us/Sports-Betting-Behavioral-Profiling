@@ -1,0 +1,12 @@
+{
+  "rows": 100000,
+  "bettors": 5000,
+  "missing_cells": 0,
+  "duplicate_rows": 0,
+  "duplicate_bet_ids": 0,
+  "invalid_stakes": 0,
+  "invalid_odds": 0,
+  "invalid_win_values": 0,
+  "payout_mismatches": 0,
+  "ggr_mismatches": 0
+}

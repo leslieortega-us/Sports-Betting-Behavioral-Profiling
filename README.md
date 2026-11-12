@@ -1,56 +1,52 @@
 # Sports Betting Behavioral Profiling
 
-## Research Question
-Can simulated sports betting records reveal distinct behavioral profiles,
-and how does observed betting performance vary across those profiles?
+**Research question:** Can simulated sports betting records reveal distinct behavioral profiles, and how does observed betting performance vary across those profiles?
 
-## Dataset
-Source: Sports Betting Profiling Dataset by Emilien Coicaud on Kaggle.
-https://www.kaggle.com/datasets/emiliencoicaud/sports-betting-profiling-dataset
+We analyze [Kaggle's simulated sports betting dataset](https://www.kaggle.com/datasets/emiliencoicaud/sports-betting-profiling-dataset): 100,000 bets from 5,000 bettors. Clustering uses behavioral features; financial outcomes are evaluated separately.
 
-The dataset contains 100,000 simulated bets from 5,000 bettors.
-The semicolon-separated CSV is stored in `data/bets.csv`.
+## Main findings
 
-## Phase 2 Progress
-- Inspected data types, missing values, duplicates, stakes, and odds.
-- Explored stake, odds, sport, and bet-type distributions.
-- Created 23 behavioral features per bettor.
-- Prepared and standardized 20 features for clustering.
-- Compared K-means models with 2–8 clusters.
-- Checked initialization stability and visualized clusters using PCA.
+- Baseline K-Means (k=2) separates lower- and higher-stake groups, with weak separation (sampled silhouette 0.0829).
+- Membership is consistent across tested seeds (ARI 0.9968–1.0000), but depends on preprocessing choices.
+- Ward hierarchical clustering gives a different split tied to rare cycling bets (291 versus 4,709 bettors), with ARI 0.0019 relative to K-Means.
+- Both baseline groups lose on average. Win rates and ROI are similar; higher-stake bettors have larger monetary losses. This does not establish a difference in skill.
+- Results describe synthetic records and do not establish real-world bettor types or predict future returns.
 
-Financial outcomes were excluded from clustering.
+## Reproduce the final analysis
 
-## Preliminary Findings
-Two clusters had the highest sampled silhouette score, approximately
-0.0829, indicating weak separation. The groups primarily differ in
-average stake and relative stake variability.
+Use Python 3.12 (tested with 3.12.14). From the repository root:
 
-With 50 initializations, pairwise adjusted Rand indices across five
-random seeds ranged from 0.997 to 1.000. The first two PCA components
-explain 19.9% of total variance.
+```bash
+python -m pip install -r requirements.txt
+python final_analysis.py
+```
 
-These results describe simulated data and do not establish bettor skill
-or future profitability.
+Alternatively, open `final_analysis.ipynb` in VS Code, select that Python environment, and run all cells. It runs the same script and displays the generated tables and figures. The script resolves data paths relative to its own location.
 
-## How to Run
-1. Install Python and the VS Code Python and Jupyter extensions.
-2. Install the required packages in your selected Python environment:
+The analysis checks the data and payout identities, builds features, compares K-Means and Ward for k=2–8, repeats seeds, checks five feature/scaling specifications, and computes bettor-level performance and exploratory bootstrap contrasts. Settings are fixed for reproducibility. All final outputs go to `outputs/final/`; exact tested versions and run settings are saved in `run_metadata.json`.
 
-   ```bash
-   python -m pip install pandas numpy matplotlib scikit-learn ipykernel
-   ```
+## Files
 
-3. Open the project folder in VS Code.
-4. Open `phase2_analysis.ipynb` and select that Python environment.
-5. Ensure the notebook is beside `README.md` and the `data` folder.
-6. Restart the kernel and run all cells in order.
+| File or folder | Purpose |
+|---|---|
+| `data/bets.csv` | Original semicolon-separated dataset |
+| `phase2_analysis.ipynb` | Preserved mid-project analysis |
+| `outputs/` (top level) | Preserved Phase 2 results |
+| `final_analysis.py` | Complete reproducible final pipeline |
+| `final_analysis.ipynb` | Notebook interface to the final pipeline |
+| `outputs/final/` | Final comparison, sensitivity, profile, and performance results; figures; validation and run metadata |
+| `reports/final_report.md` | Final analytical report draft |
+| `reports/presentation_and_demo_outline.md` | Presentation outline, demo steps, and submission checklist |
+| `requirements.txt` | Tested analysis dependencies and notebook kernel dependency |
 
-The notebook creates an `outputs` folder containing feature tables,
-cluster assignments, evaluation results, cluster summaries, and a PCA plot.
+## Interpretation notes
 
-## Remaining Work
-- Compare hierarchical clustering with K-means.
-- Assess sensitivity to feature selection and scaling.
-- Verify payout definitions and compare financial performance.
-- Complete the final report and presentation.
+Final K-Means IDs are ordered by mean stake: group 0 is lower stake and group 1 is higher stake. This reverses the Phase 2 numeric IDs while preserving membership. Ward IDs are separate and should not be interpreted as the same profiles.
+
+`gain` is gross payout including returned stake. Bettor net profit is `gain − stake`, equivalent to negative GGR. ROI is profit / stake; CSV rate fields are fractions. Mean bettor ROI and pooled ROI use different weighting. No currency is specified.
+
+Silhouette is sampled on the same 2,000 bettors within the baseline model comparison. Sensitivity silhouettes use different geometries and should not be ranked as if they measured the same space. Bootstrap intervals condition on fitted memberships and are descriptive; no claims of real-world generalization, causality, or betting skill are supported.
+
+## Remaining submission work
+
+Review the report with your group and apply the actual final course rubric; add names and contributions, prepare the finished slides, record the demo, and complete any peer evaluations. The analysis alone does not complete these course submission steps.
