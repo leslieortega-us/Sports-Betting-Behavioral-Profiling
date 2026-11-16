@@ -1,0 +1,16 @@
+{
+  "python": "3.12.1",
+  "pandas": "2.2.3",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "scikit_learn": "1.8.0",
+  "matplotlib": "3.10.8",
+  "silhouette_sample_size": 2000,
+  "random_seed": 42,
+  "n_init": 50,
+  "bootstrap_replicates": 3000,
+  "pca_variance_shown": 0.1994188277531531,
+  "baseline_ward_ari": 0.0018857470369209074,
+  "minimum_seed_ari": 0.9967892115890821,
+  "maximum_seed_ari": 1.0
+}

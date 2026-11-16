@@ -1,0 +1,14 @@
+{
+  "python": "3.12.1",
+  "k": 2,
+  "n_init": 50,
+  "random_seed": 42,
+  "history_bootstrap_repeats": 5,
+  "principal_strength": 10,
+  "strength_sensitivity": [
+    5,
+    20
+  ],
+  "history_stability_interpretation": "Descriptive perturbation diagnostic; not predictive validation or a confidence interval.",
+  "claim": "Project-specific adaptation of established shrinkage and feature weighting; no field-level novelty claimed."
+}

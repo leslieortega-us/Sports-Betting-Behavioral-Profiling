@@ -50,3 +50,27 @@ Silhouette is sampled on the same 2,000 bettors within the baseline model compar
 ## Remaining submission work
 
 Review the report with your group and apply the actual final course rubric; add names and contributions, prepare the finished slides, record the demo, and complete any peer evaluations. The analysis alone does not complete these course submission steps.
+
+## Additional Method Experiment
+
+The extension adjusts preferences for short betting histories and
+balances five behavioral feature groups before applying K-Means.
+
+Run the original analysis first, then the extension:
+
+```bash
+python -m pip install -r requirements.txt
+python final_analysis.py
+python contribution_analysis.py
+```
+
+Original results are saved in `outputs/final/`.
+Extension results are saved in `outputs/contribution/`.
+
+See `TECHNICAL_CONTRIBUTION.md` for the method and limitations.
+The original financial comparisons refer to the original groups.
+
+## Sources Submission Folder
+
+`Sources/` contains a standalone copy of the code, data, and results.
+Open that folder and use the same commands above to reproduce the analysis.

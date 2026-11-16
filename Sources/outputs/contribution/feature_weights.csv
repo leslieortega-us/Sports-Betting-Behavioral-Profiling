@@ -1,0 +1,21 @@
+group,feature,coordinate_multiplier
+activity_and_diversity,total_bets,0.7071067811865475
+activity_and_diversity,sport_diversity,0.7071067811865475
+stake,average_stake,0.7071067811865475
+stake,stake_cv,0.7071067811865475
+odds,average_odds,0.7071067811865475
+odds,odds_variance,0.7071067811865475
+sport_preferences,sport_share_Badminton,0.2773500981126146
+sport_preferences,sport_share_Baseball,0.2773500981126146
+sport_preferences,sport_share_Basketball,0.2773500981126146
+sport_preferences,sport_share_Cycling,0.2773500981126146
+sport_preferences,sport_share_Football,0.2773500981126146
+sport_preferences,sport_share_Formula 1,0.2773500981126146
+sport_preferences,sport_share_Handball,0.2773500981126146
+sport_preferences,sport_share_Ice Hockey,0.2773500981126146
+sport_preferences,sport_share_Rugby,0.2773500981126146
+sport_preferences,sport_share_Snooker,0.2773500981126146
+sport_preferences,sport_share_Table Tennis,0.2773500981126146
+sport_preferences,sport_share_Tennis,0.2773500981126146
+sport_preferences,sport_share_Volleyball,0.2773500981126146
+bet_type_preferences,bet_type_share_multiple,1.0
