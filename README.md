@@ -47,6 +47,3 @@ Final K-Means IDs are ordered by mean stake: group 0 is lower stake and group 1 
 
 Silhouette is sampled on the same 2,000 bettors within the baseline model comparison. Sensitivity silhouettes use different geometries and should not be ranked as if they measured the same space. Bootstrap intervals condition on fitted memberships and are descriptive; no claims of real-world generalization, causality, or betting skill are supported.
 
-## Remaining submission work
-
-Review the report with your group and apply the actual final course rubric; add names and contributions, prepare the finished slides, record the demo, and complete any peer evaluations. The analysis alone does not complete these course submission steps.
